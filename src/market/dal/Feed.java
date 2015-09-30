@@ -18,7 +18,7 @@ public class Feed implements Runnable {
 		            new StringBuilder("http://finance.yahoo.com/d/quotes.csv?s=");
 	            url.append(s + "+");
 	        url.deleteCharAt(url.length()-1);
-	        url.append("&f=sab&e=.csv");
+	        url.append("&f=sba&e=.csv");
 	        
 	        String theUrl = url.toString();
 	        URL obj = new URL(theUrl);
@@ -34,7 +34,7 @@ public class Feed implements Runnable {
 	        	
 	        	String[] fields = inputLine.split(",");
 	        	
-	        	System.out.println(fields[0] + ", " + fields[1] + ", " + fields[2]);
+	        	System.out.println("Symbol"+fields[0] + ", " + fields[1] + ", " + fields[2]);
 	        	
 	        }   
 		}

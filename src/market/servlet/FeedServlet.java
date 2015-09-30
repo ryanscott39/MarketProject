@@ -21,7 +21,7 @@ public class FeedServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-        String Symbol = request.getParameter("Symbol");
+        String Symbol = request.getParameter("txtSymbol");
         try {
 			Feed.getMarket(Symbol);
 		} catch (Exception e) {
