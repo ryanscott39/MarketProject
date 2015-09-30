@@ -24,7 +24,7 @@ public class Strat1 {
 	public void stratagy1(@QueryParam("str") String str) throws IOException, ClassNotFoundException, SQLException{
 		
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/montestdb", "root", "password");
+		Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/montestdb", "root", "");
 		PreparedStatement in1 = cn.prepareStatement(" drop table Strat1");
 		PreparedStatement in2 = cn.prepareStatement("create table Strat1(id int AUTO_INCREMENT PRIMARY KEY, "
 				+ "DateCreated timestamp, CompanyName nvarchar(10), AskPrice double, "
@@ -79,7 +79,7 @@ public class Strat1 {
             	if(count > 300){
             		longList.remove(0);
             		longTotal = 0;
-            		for(Double d: shortList){
+            		for(Double d: longList){
             			longTotal += d;
             		}
             		longAve = longTotal/300;
