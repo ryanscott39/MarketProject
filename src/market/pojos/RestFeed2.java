@@ -17,7 +17,7 @@ public class RestFeed2 {
 	@GET
 	@Produces("text/html")
 	public String getData() throws IOException{
-		String[] stocks = {"AAPL","IBM","CSCO","AA","MSFT"};
+		String[] stocks = {"IXIC", "MSFT", "CSCO", "AAPL","GOOG","QCOM","ORCL","EMC", "TXN", "YHOO"};
 		StringBuilder url = 
 	            new StringBuilder("http://finance.yahoo.com/d/quotes.csv?s=");
 		for (String s : stocks)
