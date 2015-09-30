@@ -29,6 +29,8 @@ public class Feed implements Runnable {
 			int responseCode = con.getResponseCode();
 	        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 	        String inputLine;
+	        
+	        
 	      
 	        while ((inputLine = in.readLine()) != null){
 	        	
