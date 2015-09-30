@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import market.dal.Feed;
 
 @WebServlet("/FeedServlet")
@@ -22,6 +23,7 @@ public class FeedServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
         String Symbol = request.getParameter("txtSymbol");
+        
         try {
 			Feed.getMarket(Symbol);
 		} catch (Exception e) {

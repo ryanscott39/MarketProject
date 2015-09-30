@@ -51,17 +51,36 @@
 					<li><img src="Images/Citi.png" id="logo" /></li>
 					<li class="active"><a href="#">Live Market Feed <span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="#">Link1</a></li>
-					<li><a href="#">Link2</a></li>
-					<li><a href="#">Link 3</a></li>
+					<li><a href="#">Strategy1</a></li>			
+					<li><a href="#">Strategy2</a></li>
+					<li><a href="#">Stats</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">Live Market Feed</h1>
 				<div class="table-responsive">
+<<<<<<< HEAD
 					<form action="FeedServlet" method="get">
-						Symbol: <input type="text" name="txtSymbol" /> <input
-							type="Submit" value="OK" />
+						Symbol: <input type="text" name="txtSymbol" /> 
+						<input type="Submit" value="OK" />
+=======
+					<form>
+						<h2>Show Market</h2>
+						<button type="button" onclick="myOnKeyUp2()">Update</button>
+						<br /> <br />
+						<p id="myEchoField2"></p>
+
+						<h2>Enter stock symbol to see current price</h2>
+						<input type="text" id="myInputField">
+						<button type="button" onclick="myOnKeyUp()">Update</button>
+						<br /> <br />
+						<p id="myEchoField"></p>
+
+						<h2>Activate Auto Trader for a Stock</h2>
+						<input type="text" id="myInputField1">
+						<button type="button" onclick="myOnKeyUp1()">Start
+							Strategy 1</button>
+>>>>>>> UPDATED-TABLE-FOR-FEED
 					</form>
 				</div>
 			</div>
@@ -78,5 +97,8 @@
 	<script src="JS/vendor/holder.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="JS/ie10-viewport-bug-workaround.js"></script>
+	
+	<script src="JS/getStocks.js"></script>
+	
 </body>
 </html>
