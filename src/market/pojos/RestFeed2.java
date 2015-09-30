@@ -35,7 +35,7 @@ public class RestFeed2 {
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         String result = null;
-        result="<table border=1><tr><td>Stock</td><td>Ask price</td><td>Bid price</td></tr>";
+        result="<table border=1><tr><td>StockS</td><td>Ask price</td><td>Bid price</td></tr>";
         String[] fields = null;
         while ((inputLine = in.readLine()) != null){
         	fields = inputLine.split(",");
