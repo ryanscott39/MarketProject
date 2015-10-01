@@ -1,4 +1,4 @@
-package market.pojos;
+package market.rest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,13 +10,18 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
+import org.jboss.logging.*;
 
 @Path("/RestFeed2")
 public class RestFeed2 {
 
 	@GET
 	@Produces("text/html")
-	public String getData() throws IOException{
+	public String getData() {
+		
+		String result = null;
+		
+		try {
 		String[] stocks = {"IXIC", "MSFT", "CSCO", "AAPL","GOOG","QCOM","ORCL","EMC", "TXN", "YHOO"};
 		StringBuilder url = 
 	            new StringBuilder("http://finance.yahoo.com/d/quotes.csv?s=");
@@ -24,6 +29,9 @@ public class RestFeed2 {
             url.append(s + "+");
         url.deleteCharAt(url.length()-1);
         url.append("&f=sab&e=.csv");
+        
+        Logger log = Logger.getLogger(this.getClass());
+		log.info("Connection to Yahoo Feed Successful");
         
         String theUrl = url.toString();
         URL obj = new URL(theUrl);
@@ -34,7 +42,7 @@ public class RestFeed2 {
 		int responseCode = con.getResponseCode();
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
-        String result = null;
+        
         result="<table border=1><tr><td>StockS</td><td>Ask price</td><td>Bid price</td></tr>";
         String[] fields = null;
         while ((inputLine = in.readLine()) != null){
@@ -43,8 +51,13 @@ public class RestFeed2 {
         }  
         result += "</table>";
         Arrays.fill(fields, null);
-		return result;
 		
+		
+		} catch (IOException i) {
+			Logger log = Logger.getLogger(this.getClass());
+			log.error("ERROR: " + i);
+		}
+		return result;
 	}
 }
 

@@ -1,4 +1,4 @@
-package market.pojos;
+package market.rest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,28 +10,36 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+
+import org.jboss.logging.*;
 
 @Path("/Strat1")
 public class Strat1 {
 
 	@GET
 	@Produces("text/html")
-	public void stratagy1(@QueryParam("str") String str) throws IOException, ClassNotFoundException, SQLException{
+	public void stratagy1(@QueryParam("str") String str) {
+		
+		try{
 		
 		System.out.println("Strategy 1 Activated");
 		
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/ad3db", "root", "");
-		/*PreparedStatement in1 = cn.prepareStatement("drop table Trades");
+		Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/ad3db", "root", "password");
+		PreparedStatement in1 = cn.prepareStatement(" drop table Trades");
 		PreparedStatement in2 = cn.prepareStatement("create table Trades(id int AUTO_INCREMENT PRIMARY KEY, "
 				+ "DateCreated timestamp, CompanyName nvarchar(10), AskPrice double, "
 				+ "BidPrice double, Position nvarchar(6), size int, ProfitPercent double);");
 		in1.executeUpdate();
-        in2.executeUpdate();*/
+		in2.executeUpdate();
+		
+		Logger log = Logger.getLogger(this.getClass());
+		log.info("Connection to Database Successful");
 		
 		int count = 0;
 		int Transactions = 0;
@@ -159,6 +167,17 @@ public class Strat1 {
             		}
             	}
         	} 
+		} catch (IOException i ) {
+			Logger log = Logger.getLogger(this.getClass());
+			log.error("ERROR: " + i.getMessage());
+		} catch (ClassNotFoundException c ) {
+			Logger log = Logger.getLogger(this.getClass());
+			log.error("ERROR: " + c.getMessage());
+		} catch (SQLException s ) {
+			Logger log = Logger.getLogger(this.getClass());
+			log.error("ERROR: " + s.getMessage());
+		}
+		
 	}
 }
 
