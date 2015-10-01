@@ -86,11 +86,11 @@ public class Strat1 {
             	}
             	
             	diffList.add(longAve-shortAve);
-            	for(int i = 0; i < diffList.size(); i++){
+            	for(int i = 0; i < diffList.size() -1; i++){
             		if(diffList.get(i)>0
             				&& diffList.get(i+1)<0){
             			PreparedStatement st = cn.prepareStatement("insert into Strat1(CompanyName, AskPrice, BidPrice, Position)"
-	    						+ "values(?,?,?,?)");
+	    						+ " values(?,?,?,?)");
 	    					st.setString(1, fields[0]);
 	    					st.setString(2, fields[1]);
 	    					st.setString(3, fields[2]);

@@ -22,6 +22,7 @@ public class RestFeed {
 		StringBuilder url = 
 	            new StringBuilder("http://finance.yahoo.com/d/quotes.csv?s=");
             for (String s: items){
+            	
             	url.append(s + "+");
             }
         url.deleteCharAt(url.length()-1);
@@ -41,8 +42,14 @@ public class RestFeed {
         
         while ((inputLine = in.readLine()) != null){
         	String[] fields = inputLine.split(",");
+
+        	if (fields[1].equals("N/A") || fields[2].equals("N/A")){
+	
+        	}
+        	else{
+        		 result += "<tr><td>"+fields[0]+"</td><td>"+fields[1]+"</td><td>"+fields[2]+"</td></tr>";
+        	}
         	
-        	 result += "<tr><td>"+fields[0]+"</td><td>"+fields[1]+"</td><td>"+fields[2]+"</td></tr>";
         }  
         result += "</table>";
 		return result;
