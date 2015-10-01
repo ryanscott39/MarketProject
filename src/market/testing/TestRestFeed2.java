@@ -9,7 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import market.pojos.RestFeed;
+import market.rest.RestFeed;
 
 public class TestRestFeed2 {
 
