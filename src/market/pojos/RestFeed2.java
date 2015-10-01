@@ -44,6 +44,7 @@ public class RestFeed2 {
         result += "</table>";
         Arrays.fill(fields, null);
 		return result;
+		
 	}
 }
 
